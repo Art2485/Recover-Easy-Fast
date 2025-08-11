@@ -1,12 +1,11 @@
 package com.recovereasy
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.setContentView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,7 +15,6 @@ class MainActivity : ComponentActivity() {
         val adapter = MediaAdapter()
         rv.adapter = adapter
 
-        // ตัวอย่างข้อมูล (ภาพจาก picsum)
         adapter.submitList(
             List(20) { i ->
                 MediaItem(
