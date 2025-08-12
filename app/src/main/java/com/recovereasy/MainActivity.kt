@@ -1,11 +1,29 @@
 package com.recovereasy
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.activity.ComponentActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val tv = TextView(this).apply {
+            text = "RecoverEasy is running 🎉"
+            textSize = 20f
+            setPadding(48, 96, 48, 96)
+        }
+
+        val root = LinearLayout(this).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            addView(tv)
+        }
+
+        setContentView(root)
     }
 }
