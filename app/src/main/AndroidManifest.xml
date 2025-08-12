@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.recovereasy">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="RecoverEasy"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@android:drawable/sym_def_app_icon"
         android:supportsRtl="true">
 
         <activity
