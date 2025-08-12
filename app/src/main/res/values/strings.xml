@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecoverEasy</string>
+    <string name="perm_denied">ต้องอนุญาตให้เข้าถึงสื่อในเครื่องก่อน</string>
+    <string name="loaded">โหลดไฟล์ %1$d รายการ</string>
 </resources>
