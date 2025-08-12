@@ -14,9 +14,15 @@ class MediaAdapter : ListAdapter<MediaItem, MediaAdapter.VH>(DIFF) {
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<MediaItem>() {
-            override fun areItemsTheSame(o: MediaItem, n: MediaItem) = o.title == n.title
+            override fun areItemsTheSame(o: MediaItem, n: MediaItem) = o.id == n.id
             override fun areContentsTheSame(o: MediaItem, n: MediaItem) = o == n
         }
+    }
+
+    inner class VH(v: View) : RecyclerView.ViewHolder(v) {
+        val thumb: ImageView = v.findViewById(R.id.thumb)
+        val name: TextView = v.findViewById(R.id.name)
+        val meta: TextView = v.findViewById(R.id.meta)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -25,18 +31,14 @@ class MediaAdapter : ListAdapter<MediaItem, MediaAdapter.VH>(DIFF) {
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(getItem(position))
-    }
+        val item = getItem(position)
+        holder.name.text = item.displayName
+        holder.meta.text = item.mime
 
-    class VH(v: View) : RecyclerView.ViewHolder(v) {
-        private val thumb: ImageView = v.findViewById(R.id.thumb)
-        private val title: TextView = v.findViewById(R.id.title)
-        private val sub: TextView = v.findViewById(R.id.sub)
-
-        fun bind(item: MediaItem) {
-            title.text = item.title
-            sub.text = item.subtitle
-            thumb.load(item.imageUrl) {
+        if (item.type == MediaType.AUDIO) {
+            holder.thumb.setImageResource(R.drawable.ic_audio)
+        } else {
+            holder.thumb.load(item.uri) {
                 crossfade(true)
             }
         }
