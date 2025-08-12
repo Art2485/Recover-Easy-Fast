@@ -25,7 +25,7 @@ android {
         }
     }
 
-    // ใช้ XML + ViewBinding (ไม่ใช่ Compose)
+    // ใช้ ViewBinding (ไม่ใช้ Compose)
     buildFeatures {
         viewBinding = true
     }
@@ -40,4 +40,12 @@ android {
 }
 
 dependencies {
-    implementation
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // แก้ error coil / load / crossfade
+    implementation("io.coil-kt:coil:2.6.0")
+}
